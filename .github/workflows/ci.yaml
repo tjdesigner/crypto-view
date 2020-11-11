@@ -15,7 +15,7 @@ jobs:
         with:
           node-verion: 12
       - name: Install dependecies
-      run: yarn
+        run: yarn
       - name: Testing
         run: CI=true yarn test
       - name: Build
