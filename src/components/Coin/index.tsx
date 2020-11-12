@@ -1,4 +1,3 @@
-import classes from '*.module.sass';
 import * as React from 'react';
 import './index.css';
 
