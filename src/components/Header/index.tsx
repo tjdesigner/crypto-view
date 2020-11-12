@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import './index.css';
 
 import Coin from '../Coin';
 import { cryptoHttp } from '../../http';
+import { useEffect } from 'react';
 
 interface HeaderProps {
   onSelected: (coin:string) => void;
@@ -22,7 +23,7 @@ export const Header:React.FC<HeaderProps> = (props) => {
   const {onSelected} = props;
   const [prices, setPrices] = React.useState<Price>(ALL_PRICES);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const intervals = Object.keys(ALL_PRICES).map((coin) => {
       return setInterval(() => {
         cryptoHttp.get(`price?fsym=${coin}&tsyms=BRL`)
