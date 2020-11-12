@@ -39,9 +39,6 @@ export const Charts: React.FC<ChartProps> = (props) => {
     }, [coin]);
 
     useEffect(() => {
-        if(!chartLoaded) {
-            return;
-        }
         cryptoHttp.get(`histoday?fsym=${coin}&tsym=BRL&limit=300`)
         .then(response => {
             const prices = response.data.Data.map((row: any) => ({
