@@ -17,6 +17,9 @@ export const Charts: React.FC<ChartProps> = (props) => {
     const [chartLoaded, setChartLoaded] = useState(false);
 
     useEffect(() => {
+        if(!chartLoaded) {
+            return;
+        }
         const interval = setInterval(() => {
             cryptoHttp.get(`histominute?fsym=${coin}&tsym=BRL&limit=300`)
             .then(response => {
@@ -57,13 +60,13 @@ export const Charts: React.FC<ChartProps> = (props) => {
         setPrices([]);
     }, [coin]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if(candleSeriesRef.current){
         candleSeriesRef.current.setData(prices);
         }
     }, [prices]);
     
-    useEffect(() => {
+    React.useEffect(() => {
         const chart = createChart(containerRef.current , {
             width: containerRef.current.clientWidth,
             height: containerRef.current.clientHeight,
